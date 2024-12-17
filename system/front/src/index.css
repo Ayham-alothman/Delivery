@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components{
+    .LargeText{
+        @apply  text-3xl font-bold ;
+    }
+}
+
+@layer components{
+    .MeduimText{
+        @apply  text-xl font-medium ;
+    }
+}
+
+@layer components{
+    .SmallText{
+        @apply text-sm font-light text-gray-600;
+    }
+}
+
+@layer components{
+    .SmallButton{
+        @apply border  bg-red-700 rounded-xl text-sm px-1 py-1 text-white;
+    }
+}
+
+
+@layer components{
+    .LargeButton{
+        @apply border bg-black w-40 rounded-xl  text-white py-2 ;
+    }
+}
