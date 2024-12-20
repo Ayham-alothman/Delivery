@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Dashbored from './pages/Dashbored';
 import Factory from './pages/Factory';
 import Driver from './pages/Driver';
+import Supermarket from './pages/Supermarket';
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
        <Route path='/dashbored' element={<Dashbored/>}></Route>
        <Route path='/factory' element={<Factory/>}></Route>
        <Route path='/driver' element={<Driver/>}></Route> 
+       <Route path='/supermarket' element={<Supermarket/>}></Route> 
+
      </Routes>
    </BrowserRouter>
    </>

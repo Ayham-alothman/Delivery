@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 import SubCurrentOrder from "./SubCurrentOrder";
 import WaitingAproval from "./WaitingAproval";
-import { updatecurOrder } from "../../state/slices/orderSlice";
 
 function CurrentOrder(){
    
