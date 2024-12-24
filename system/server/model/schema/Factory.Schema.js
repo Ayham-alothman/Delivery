@@ -1,10 +1,10 @@
 import { Schema,model,Types } from "mongoose";
 
 const FacotrySchema=new Schema({
-    idUser:{typeof:Types.ObjectId,require:true},
-    requestOrder:{typeof:[],default:[]},
-    waitOrder:{typeof:[],default:[]},
-    historyOrder:{typeof:[],default:[]}
+    idUser:{type:Types.ObjectId,require:true},
+    requestOrder:{type:[],default:[]},
+    waitOrder:{type:[],default:[]},
+    historyOrder:{type:[],default:[]}
 })
 
 const Factory=model('factory',FacotrySchema);

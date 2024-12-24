@@ -1,12 +1,11 @@
 import mongoose,{Schema} from 'mongoose';
+const UserSchema = new mongoose.Schema({
+    username: { type: String, required: true },
+    password: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    actor: { type: String, required: true },
+    idActore: { type: mongoose.Schema.Types.ObjectId, required: true }
+});
 
-const userSchema=new Schema({
-username:{require:true,typeof:String},
-password:{require:true,typeof:String},
-email:{typeof:String,require:true},
-actor:{typeof:String,Enume:[`driver`,'supermarket','factory'],require:true},
-idActore:{typeof:Schema.Types.ObjectId,require:true}
-})
-
-const User= mongoose.model('user',userSchema);
+const User= mongoose.model('user',UserSchema);
 export {User} ;
