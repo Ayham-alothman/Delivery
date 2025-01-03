@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-import {Driver} from '../model/schema/Driver.Schema.js';
-import { User } from '../model/schema/User.Schema.js';
+import {Driver} from '../schema/Driver.Schema.js';
+import { User } from '../schema/User.Schema.js';
 async function AddOrderDriver(idDriver,idOrder,idSupermarket,products){
     
     try{

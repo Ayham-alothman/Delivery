@@ -1,4 +1,4 @@
-import {Factory} from '../model/schema/Factory.Schema.js'
+import {Factory} from '../schema/Factory.Schema.js'
 async function AddOrderFactory(products,idOrder,Driver){
 
     try{

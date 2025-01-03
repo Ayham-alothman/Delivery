@@ -25,3 +25,4 @@ async function SignupDriver(infoDriver){
 
 export {SignupDriver}
 
+SignupDriver({username:"drive1",password:"12345678",email:"drive@gmai;.com"});

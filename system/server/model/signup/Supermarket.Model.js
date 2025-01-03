@@ -25,4 +25,4 @@ async function SignupSuper(infoSuper){
 
 export {SignupSuper}
 
-
+SignupSuper({username:"super1",password:"12345678",email:"super@@gmail.com"});

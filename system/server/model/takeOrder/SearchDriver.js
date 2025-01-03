@@ -1,6 +1,6 @@
 import mognoose,{connect} from 'mongoose';
 
-import {Driver} from '../model/schema/Driver.Schema.js';
+import {Driver} from '../schema/Driver.Schema.js';
 
 async function searchDriver(){
 try{

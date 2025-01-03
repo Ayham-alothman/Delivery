@@ -24,7 +24,7 @@ async function SignupFactory(infoDriver){
 }
 
 export {SignupFactory}
-//SignupFactory({username:"factory2",email:"factory2@gmail.com",password:"12345678"})
+SignupFactory({username:"factory2",email:"factory2@gmail.com",password:"12345678"})
 
 
 
