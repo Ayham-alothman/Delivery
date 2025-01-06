@@ -1,9 +1,25 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors'
 
 const app=express();
+app.use(bodyParser.json());
+app.use(cors({origin:'*'}));
 
 
-app.get('/',(req,res)=>{
+import RouterFactory from './route/factory/Factory.Route.js';
+import RouterDriver from './route/driver/Driver.Router.js';
+import RouterSuper from './route/supermarket/Supermarket.Router.js';
+import Signup from './route/signup/Signup.Router.js';
+import Login from './route/login/Login.Router.js'
+
+app.use('/factory',RouterFactory);
+app.use('/driver',RouterDriver);
+app.use('/supermarket',RouterSuper);
+app.use('/signup',Signup);
+app.use(`/login`,Login);
+
+app.get('/',(req,res)=>{ 
     res.status(200).send(`this route runing `);
 })
 

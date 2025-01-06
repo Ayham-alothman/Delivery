@@ -3,10 +3,7 @@ import mognoose,{connect} from 'mongoose';
 
 import {User} from '../schema/User.Schema.js'
 import {Supermarket} from '../schema/Supermarjet.Schema.js'
-async function SignupSuper(infoSuper){
-  let username=infoSuper.username;
-  let password=infoSuper.password;
-  let email=infoSuper.email
+async function SignupSuper(username,password,email){
   let actor="supermarket";
   try{
       await connect(`mongodb://localhost:27017/Delivery`);
@@ -25,4 +22,4 @@ async function SignupSuper(infoSuper){
 
 export {SignupSuper}
 
-SignupSuper({username:"super1",password:"12345678",email:"super@@gmail.com"});
+//SignupSuper({username:"super1",password:"12345678",email:"super@@gmail.com"});

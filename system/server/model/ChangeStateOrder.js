@@ -1,8 +1,11 @@
-import {Order} from './schema/Order.Schema.js'
+import {Order} from './schema/Order.Schema.js';
+import mognoose ,{connect} from 'mongoose';
+
 
 async function ChangeStateOrder(idOrder,idProduct,state){
     try{
-        
+        await connect(`mongodb://localhost:27017/Delivery`);
+
         await Order.findOneAndUpdate(
             {_id:idOrder,"products.idProduct":idProduct},
             {$set:{"products.$.state":state}}
@@ -10,6 +13,8 @@ async function ChangeStateOrder(idOrder,idProduct,state){
           console.log(true)
     }
     catch(e){throw e}
+    finally{await mognoose.connection.close();}
+
 }
 
 export {ChangeStateOrder}

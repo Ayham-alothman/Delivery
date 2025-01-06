@@ -3,10 +3,8 @@ import mognoose,{connect} from 'mongoose';
 
 import {User} from '../schema/User.Schema.js'
 import {Factory} from '../schema/Factory.Schema.js'
-async function SignupFactory(infoDriver){
-  let username=infoDriver.username;
-  let password=infoDriver.password;
-  let email=infoDriver.email
+async function SignupFactory(username,password,email){
+  
   let actor="factory";
   try{
       await connect(`mongodb://localhost:27017/Delivery`);
@@ -24,7 +22,7 @@ async function SignupFactory(infoDriver){
 }
 
 export {SignupFactory}
-SignupFactory({username:"factory2",email:"factory2@gmail.com",password:"12345678"})
+//SignupFactory({username:"factory2",email:"factory2@gmail.com",password:"12345678"})
 
 
 

@@ -53,12 +53,12 @@ async function ValditionAprovalSupermarket(idDriver,idSupermarket,idOrder,Produc
 
 export {ValditionAprovalSupermarket}
 
-let products=[{
-    idProduct: "676a95b8df8cf2aa089ca7fe",
-    count: 3,
-    name: "product3",
-    price: "400",
-    category: "category2",
-    idFactory: "6773ee6280baa4f6d750f1a7",
-  }]
-ValditionAprovalSupermarket('6773ede2b1410810cc032ccb',"6773e878dd119aaddcba444b","6776b7a1c671eaf87b3d3e88",products)
+//let products=[{
+//    idProduct: "676a95b8df8cf2aa089ca7fe",
+//    count: 3,
+//    name: "product3",
+//    price: "400",
+//    category: "category2",
+//    idFactory: "6773ee6280baa4f6d750f1a7",
+//  }]
+//ValditionAprovalSupermarket('6773ede2b1410810cc032ccb',"6773e878dd119aaddcba444b","6776b7a1c671eaf87b3d3e88",products)

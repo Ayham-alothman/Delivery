@@ -2,11 +2,8 @@ import mongoose,{connect} from 'mongoose';
 
 import {Product} from '../schema/Product.Schema.js'
 
-async function SignupProduct(infoProduct){
-  let nameP=infoProduct.name;
-  let category=infoProduct.category;
-  let price=infoProduct.price;
-  let idFactory=infoProduct.idFactory
+async function SignupProduct(nameP,category,price,idFactory){
+ 
   try{
       await connect(`mongodb://localhost:27017/Delivery`);
       const product=new Product({name:nameP,category:category,price:price,idFactory:idFactory});
@@ -19,7 +16,7 @@ async function SignupProduct(infoProduct){
 
 export {SignupProduct}
 
-SignupProduct({name:"product11",category:"category11",price:"2220",idFactory:"676aa1c7cbe9148413996672"})
+//SignupProduct({name:"product11",category:"category11",price:"2220",idFactory:"676aa1c7cbe9148413996672"})
 
 
 

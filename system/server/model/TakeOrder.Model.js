@@ -53,26 +53,28 @@ async function TakeOrder(idSupermarket, products) {
 
 export { TakeOrder };
 
-let Products = [
-  {
-    idProduct: "676a95b8df8cf2aa089ca7fe",
-    count: 5,
-    name: "product3",
-    price: "400",
-    category: "category2",
-    idFactory: "6773ee6280baa4f6d750f1a7",
-  },
-  {
-    idProduct: "676a95f5fed2f140c2a06480",
-    count: 5,
-    name: "product1",
-    price: "200",
-    category: "category1",
-    idFactory: "6773eee04045b475d82a351d",
-  }
-];
 
-TakeOrder("6773e878dd119aaddcba444b", Products);
+
+//let Products = [
+//  {
+//    idProduct: "676a95b8df8cf2aa089ca7fe",
+//    count: 5,
+//    name: "product3",
+//    price: "400",
+//    category: "category2",
+//    idFactory: "6773ee6280baa4f6d750f1a7",
+//  },
+//  {
+//    idProduct: "676a95f5fed2f140c2a06480",
+//    count: 5,
+//    name: "product1",
+//    price: "200",
+//    category: "category1",
+//    idFactory: "6773eee04045b475d82a351d",
+//  }
+//];
+
+//TakeOrder("6773e878dd119aaddcba444b", Products);
 // data set ? (idsuper,product:[{idpro,name,price,count}])
 
 //add to module order (idorder,idDriver,idSuper,Product:[{idPrduct,count,state}])

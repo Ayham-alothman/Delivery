@@ -4,10 +4,8 @@ import mognoose,{connect} from 'mongoose';
 import {Driver} from '../schema/Driver.Schema.js';
 import {User} from '../schema/User.Schema.js'
 
-async function SignupDriver(infoDriver){
-  let username=infoDriver.username;
-  let password=infoDriver.password;
-  let email=infoDriver.email
+async function SignupDriver(username,password,email){
+  
   let actor="driver";
   try{
       await connect(`mongodb://localhost:27017/Delivery`);
@@ -25,4 +23,4 @@ async function SignupDriver(infoDriver){
 
 export {SignupDriver}
 
-SignupDriver({username:"drive1",password:"12345678",email:"drive@gmai;.com"});
+//SignupDriver({username:"drive1",password:"12345678",email:"drive@gmai;.com"});
