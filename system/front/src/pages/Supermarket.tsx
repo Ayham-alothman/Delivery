@@ -5,14 +5,27 @@ import { MdLocalMall } from "react-icons/md";
 import { MdRunningWithErrors } from "react-icons/md";
 import { MdHistory } from "react-icons/md";
 import { BiSupport } from "react-icons/bi";
+import { IoMdRefreshCircle } from "react-icons/io";
+
+
+
+import { useSelector } from "react-redux";
+import { RootState } from "../state/initstate";
 
 import TakeOrderr from "../component/forSupermarket/TakeOrder";
 import CurrentOrderSupermarket from "../component/forSupermarket/CurrentOrderSupermarket";
 import HisoryOrderSupermarket from "../component/forSupermarket/HisoryOrderSupermarket";
 import SupportSupermarket from "../component/forSupermarket/SupportSupermarket";
 
+import Api from "../utility/initApi";
+import { useEffect, useState } from "react";
 
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+
+import { FilterOrder } from "../utility/FilterOrder";
+import { setOrderSuper } from "../state/slices/orderSliceSupemarket";
+import Sucsess from "../utility/Notifaction/Scusess";
 
 function Supermarket(){
    
@@ -22,6 +35,46 @@ function Supermarket(){
     let [CurrentOrder,setCurrentOrder]=useState(0);
     let [HistoryOrder,setHistoryOrder]=useState(0);
     let [Support,setSupport]=useState(0);
+
+    const dispatch=useDispatch();
+
+
+    const username=useSelector((s:RootState)=>s.userSlice.username);
+    const idInfo=useSelector((s:RootState)=>s.userSlice.idInfo);
+
+    async function Refresh(){
+      try{
+      const res=await Api.post('/supermarket/getorder',{idSupermarket:idInfo});
+      const waitOrder=FilterOrder(res.data.waitOrder);
+      const aprovalOrder=FilterOrder(res.data.aprovalOrder);
+      const historyOrder=FilterOrder(res.data.historyOrder);
+      dispatch(setOrderSuper({waitOrder,aprovalOrder,historyOrder}));
+      Sucsess(`done refresh`)
+    }
+      catch(e){
+       console.log(e)
+      }
+  }
+
+
+   async function getOrder(){
+    try{console.log('set')
+      const res=await Api.post('/supermarket/getorder',{idSupermarket:idInfo});
+      const waitOrder=FilterOrder(res.data.waitOrder);
+      const aprovalOrder=FilterOrder(res.data.aprovalOrder);
+      const historyOrder=FilterOrder(res.data.historyOrder);
+      dispatch(setOrderSuper({waitOrder,aprovalOrder,historyOrder}))
+    }
+    catch(e){console.log(`err`,e)}
+   }
+
+
+   useEffect(()=>{
+     getOrder()
+   },[])
+
+
+
 
     function changeNav(N:number){
       if(N==1){setNav1(1);setNav2(0)}
@@ -47,12 +100,13 @@ function Supermarket(){
            <div className="w-full h-16 flex justify-between items-center px-3 ">
             <div className="flex space-x-1 ">
               <p className="text-3xl text-red-600 "><MdLocalMall /></p>
-              <p className="text-xl text-red-600 ">name user</p>
+              <p className="text-xl text-red-600 ">{username}</p>
             </div>
             <div className="text-4xl text-red-600" onClick={()=>{changeNav(1)}}><FaArrowAltCircleLeft /></div>
            </div>
            
            <div className="h-full w-full flex flex-col border-t  border-red-600">
+            <div className="w-full h-12  flex justify-center items-center px-2 text-red-600 hover:bg-white hover:rounded-full" ><p onClick={(e)=>{Refresh();}} className="text-3xl flex justify-center items-start "><IoMdRefreshCircle /></p></div> 
             <div className=" w-full h-12 flex justify-between px-3 items-center text-red-600 hover:bg-white hover:rounded-3xl" onClick={()=>{changeContent("1")}}><p className="text-3xl"><MdLocalGroceryStore /></p> <p className="font-light">take order</p></div>
             <div className=" w-full h-12 flex justify-between px-3 items-center text-red-600 hover:bg-white hover:rounded-3xl" onClick={()=>{changeContent("2")}}><p className="text-3xl"><MdRunningWithErrors /></p> <p className="font-light">current order</p></div>
             <div className=" w-full h-12 flex justify-between px-3 items-center text-red-600 hover:bg-white hover:rounded-3xl" onClick={()=>{changeContent("3")}}><p className="text-3xl"><MdHistory /></p> <p className="font-light">History order</p></div>

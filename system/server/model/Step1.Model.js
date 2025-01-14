@@ -24,7 +24,7 @@ async function Step1Factory(idDriver,idOrder,Products){
         }
 
     }
-    catch(e){throw e}
+    catch(e){console.log(e)}
     finally{await mognoose.connection.close();}
 }
 

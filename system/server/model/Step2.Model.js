@@ -28,15 +28,17 @@ async function AprovalDriver(idDriver, idOrder, Products) {
         CancelProduct.push(prod);
       }
     }
+    console.log(`proooo`)
     console.log(AprovalProduct)
     console.log(CancelProduct)
+    console.log(`proooo`)
 
     for (let prod of AprovalProduct) {
       await RemoveWaitRequest(prod, idOrder);
       await AddHistoryFactory(prod, idOrder, idDriver);
       await RemoveAprovalDriver(prod, idOrder,idDriver);
       await AddSendSuperDriver(prod, idOrder, idDriver);
-      await ChangeStateOrder(idOrder,prod.idProduct,3)
+      await ChangeStateOrder(idOrder,prod.idProduct,3);
     }
 
     for (let prod of CancelProduct) {
@@ -47,7 +49,7 @@ async function AprovalDriver(idDriver, idOrder, Products) {
       await ChangeStateOrder(idOrder,prod.idProduct,1)
     }
   } catch (e) {
-    throw e;
+    console.log(e);
   } finally {
     await mongoose.connection.close();
   }

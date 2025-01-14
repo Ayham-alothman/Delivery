@@ -4,16 +4,16 @@ import mognoose ,{connect} from 'mongoose';
 
 async function ChangeStateOrder(idOrder,idProduct,state){
     try{
-        await connect(`mongodb://localhost:27017/Delivery`);
+        
 
         await Order.findOneAndUpdate(
             {_id:idOrder,"products.idProduct":idProduct},
             {$set:{"products.$.state":state}}
         ) 
-          console.log(true)
+          
     }
     catch(e){throw e}
-    finally{await mognoose.connection.close();}
+    
 
 }
 

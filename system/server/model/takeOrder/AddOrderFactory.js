@@ -1,5 +1,8 @@
 import {Factory} from '../schema/Factory.Schema.js'
+import mongoose,{connect} from 'mongoose';
+
 async function AddOrderFactory(products,idOrder,Driver){
+      idOrder = new mongoose.Types.ObjectId(idOrder);
 
     try{
 
@@ -7,12 +10,14 @@ async function AddOrderFactory(products,idOrder,Driver){
         let DocFactory=await Factory.findById(prod.idFactory);
         let found=false
         for(let i=0;i<DocFactory.requestOrder.length;i++){
-          if(DocFactory.requestOrder[i].idOrder==idOrder){found=true;break;}
+          if(DocFactory.requestOrder[i].idOrder.toString()==idOrder.toString()){found=true;break;}
+          
         }
+        
         if(found){
             await Factory.updateOne(
                 { _id: prod.idFactory, "requestOrder.idOrder": idOrder },
-                { $push: { "requestOrder.$.products": prop } }
+                { $push: { "requestOrder.$.products": prod } }
             );
         }
         else{

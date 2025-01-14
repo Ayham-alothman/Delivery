@@ -1,35 +1,36 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Define the product type
 interface Product {
-    id: string;
-    name: string;
-    price: string;
-    count:string
+    idProduct: string;
+    name: string; 
+    price:string,
+    category:string,
+    count:string,
+    idFactory:string
 }
 
-// Define the initial state type
-interface BasketState {
+interface ProductState {
     products: Product[];
 }
 
 // Create the slice
 const BasketSupermarket = createSlice({
     name: "basket",
-    initialState: {products:[] } as BasketState,
+    initialState: { products: [] } as ProductState,
     reducers: {
         clearProduct: (state) => {
             state.products = [];
         },
-        setNewProduct: (state, action: PayloadAction<Product>) => {
-           console.log(action.payload);
-           state.products.push(action.payload);
+        setNewProduct: (state, action) => {
+            
+            state.products.push(action.payload);
+
            
         },
         RemoveProduct:(state,action)=>{
             let idProduct=action.payload;
-            state.products=state.products.filter((e)=>{
-                if(e.id!=idProduct){return e}
+            state.products=state.products.filter((e:any)=>{
+                if(e.idProduct!=idProduct){return e}
             })
         }
     }

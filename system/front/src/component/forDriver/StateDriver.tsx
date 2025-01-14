@@ -1,11 +1,29 @@
 import { useState } from "react";
+import Api from "../../utility/initApi";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/initstate";
+import Sucsess from "../../utility/Notifaction/Scusess";
 
 function StateDriver(){
-    const [status, setStatus] = useState('off');
+  const [status, setStatus] = useState('on');
+  const idDriver=useSelector((s:RootState)=>s.userSlice.idInfo);
 
-  const handleChange = (event:any) => {
-    setStatus(event.target.value);
-  };
+  async function  handleChange  (e:any)  {
+    setStatus(e.target.value); 
+    let state;
+    if(e.target.value=="on"){state=true}
+    if(e.target.value=="off"){state=false};console.log(state)
+    try{
+      const res=await Api.post(`/driver/changestate`,{idDriver:idDriver,state:state});
+      if(res.status==200){
+        Sucsess(`the state change to ${state}`)
+      }
+    }
+    catch(e){console.log(e)}
+
+    
+    
+  }
 
   return (
     <div className="flex">
@@ -25,7 +43,7 @@ function StateDriver(){
         <input
           type="radio"
           className="mr-1"
-          value="off"
+          value='off'
           checked={status === 'off'}
           onChange={handleChange}
         />

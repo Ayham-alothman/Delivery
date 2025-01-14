@@ -5,6 +5,7 @@ import orderSliceDriver from "./slices/orderSliceDriver";
 import ProductSlice from "./slices/productSupermarket";
 import bascketSupermarket from "./slices/bascketSupermarket";
 import orderSliceSupemarket from "./slices/orderSliceSupemarket";
+import userSlice from "./slices/userSlice";
 
 
 export const store=configureStore({
@@ -13,7 +14,8 @@ export const store=configureStore({
         orderDriverSlice:orderSliceDriver,
         productSliceSupermarkit:ProductSlice,
         bascket:bascketSupermarket,
-        orderSupermarketSlice:orderSliceSupemarket
+        orderSupermarketSlice:orderSliceSupemarket,
+        userSlice:userSlice,
         
     }
 })

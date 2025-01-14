@@ -11,12 +11,14 @@ function CardProductSupermarkit(prop:any){
 
     function AddtoBascket(){ 
         if (CountPro!="") {
-            // Create a new product object
+          
             const newProduct = {
-                id: prop.e.id, // Replace with actual ID
-                name: prop.e.name, // Replace with actual name
-                price: prop.e.price, // Assuming CountPro is the price
-                count: CountPro
+                idProduct: prop.e._id, 
+                name: prop.e.name, 
+                price: prop.e.price, 
+                category:prop.e.category,
+                count: CountPro,
+                idFactory:prop.e.idFactory
             };
             
             // Dispatch the action to add the new product
@@ -32,7 +34,6 @@ function CardProductSupermarkit(prop:any){
         <div className="w-full h-1/2"><img src={imgCard} className="w-full h-full object-contain "></img></div>
         <p className="flex-1 SmallText pl-4">name:{prop.e.name}</p>
         <p className="flex-1 SmallText pl-4">price:{prop.e.price}</p>
-        <p className="flex-1 SmallText pl-4">number of unit:{prop.e.numberOfUnit}</p>
         <p className="flex-1 SmallText pl-4">category:{prop.e.category}</p>
         <input className="h-8 pl-2 rounded border-2 border-black mb-1" placeholder="number of count you need ?" value={CountPro} onChange={(e)=>{setCountPro(e.target.value)}}></input>
         <button className="h-10 bg-red-600 text-white" onClick={()=>{AddtoBascket()}}>Add to bascket</button>

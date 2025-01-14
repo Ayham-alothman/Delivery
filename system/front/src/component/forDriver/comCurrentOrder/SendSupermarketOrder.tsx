@@ -7,10 +7,10 @@ function SendSupermarketOrder(){
     
     return(
         <div className="w-full h-full flex flex-col overflow-y-scroll ">  
-          {OrderSupermarket.map((e,i)=>{
+          {OrderSupermarket.map((e:any)=>{
             return (
             <>
-            <OrderSendSupermarketDriver idOrder={e.idOrder} supermarket={e.supermarket} products={e.products} />
+            <OrderSendSupermarketDriver idOrder={e.idOrder} supermarket={e.Supermarket} products={e.products} />
             </>
             )
             })}

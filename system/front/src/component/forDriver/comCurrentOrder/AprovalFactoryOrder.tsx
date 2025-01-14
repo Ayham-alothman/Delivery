@@ -8,10 +8,10 @@ function AprovalFactoryOrder(){
     
         return(
         <div className="w-full h-full flex flex-col overflow-y-scroll ">  
-          {AprovalOrder.map((e,i)=>{
+          {AprovalOrder.map((e:any)=>{
             return (
             <>
-            <OrderAprovalFactoryDriver idOrder={e.idOrder} factory={e.factory} products={e.products} />
+            <OrderAprovalFactoryDriver idOrder={e.idOrder} factory={e.Supermarket} products={e.products} />
             </>
             )
             })}

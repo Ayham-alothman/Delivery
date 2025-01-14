@@ -1,11 +1,49 @@
+import { useState } from 'react';
 import Car from '../assets/images/car.png';
 import { FaApple } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 
+import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+
+import mesErorr from '../utility/Notifaction/Erorr';
+import mesSucsess from '../utility/Notifaction/Scusess';
+
+import { LoginU } from '../state/slices/userSlice';
+
+import Api from '../utility/initApi';
+
 function Login(){
 
-    const gray=1;
+    const dispatch=useDispatch();
+    const navigate = useNavigate();
+
+
+
+    let [Email,setEmail]=useState("");
+    let [Password,setPassword]=useState("");
+
+    async function loginUser(){
+     try{  
+         const res=await Api.post('/login',{email:Email,password:Password});
+         if(res.status==200){
+            const {idUser,username,email,idinfo,actor}=res.data;
+            dispatch(LoginU({id:idUser,username,email,idInfo:idinfo}));
+            mesSucsess(`login done`)
+            if(actor=="supermarket"){navigate(`/supermarket`);}
+            else if(actor=="driver"){navigate(`/driver`);}
+            else if(actor=="factory"){navigate(`/factory`);}
+         }
+
+     }
+     catch(e:any){
+        if(e.response.data){mesErorr(e.response.data)}
+        else if(e instanceof Error){mesErorr(e.message)}
+        else{mesErorr(`ther problem in server try later`)}
+     }
+    }
+    
     return(
     <>
      <div className=" h-screen  flex flex-col justify-end items-center">
@@ -19,16 +57,16 @@ function Login(){
                 <div className='h-full bg-white w-full flex flex-col '>
                     <div className='w-full flex-1 pl-5 border-b-2 flex flex-col justify-center'>
                         <p className=' font-thin text-sm'>EMAIL ADDRESS</p>
-                        <input type="text" placeholder='name@example.com' className=' w-full h-10 font-thin border-0 pl-2' />
+                        <input value={Email} onChange={(e)=>{setEmail(e.target.value)}} type="text" placeholder='name@example.com' className=' w-full h-10 font-thin border-0 pl-2' />
                     </div>
 
                     <div className='flex-1 pl-5 flex flex-col justify-center'>
                          <p className='font-thin text-sm'>Password</p>
-                        <input type="password" placeholder='Password' className=' w-full h-10 font-thin border-0 pl-2' />      
+                        <input value={Password} onChange={(e)=>{setPassword(e.target.value)}} type="password" placeholder='Password' className=' w-full h-10 font-thin border-0 pl-2' />      
                     </div>
 
                     <div className='flex-1 flex  items-center '>
-                        <div className="h-2/5 w-2/3 bg-black rounded-lg text-white ml-5 flex justify-center items-center"   >Login</div>
+                        <div onClick={()=>{loginUser()}} className="h-2/5 w-2/3 bg-black rounded-lg text-white ml-5 flex justify-center items-center"   >Login</div>
                     </div>
                 </div>
 

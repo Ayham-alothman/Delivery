@@ -43,8 +43,8 @@ async function TakeOrder(idSupermarket, products) {
       idDriver: idDriver,
       nameDriver: nameDriver,
     });
-    await AddOrderDriver(idDriver, idNewOrder, idSupermarket, products);
-  } catch (e) {
+    await AddOrderDriver(idDriver, idNewOrder, idSupermarket, products);console.log('done')
+  } catch (e) {console.log(e)
     throw e;
   } finally {
     await mognoose.connection.close();

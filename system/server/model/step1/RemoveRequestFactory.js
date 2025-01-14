@@ -14,7 +14,7 @@ async function RemoveRequestFactory(idFactory, idOrder, Product) {
       },
       { new: true } // This option returns the updated document
     );
-    console.log(re);
+    
   } catch (e) {
     throw e;
   } 

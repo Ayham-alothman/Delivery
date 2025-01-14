@@ -7,10 +7,10 @@ function SubCurrentOrder(){
   let receiveOrder=useSelector((s:RootState)=>s.orderSlice.curOrder.receiveOrder);
     return(
         <div className="w-full h-full flex flex-col overflow-y-scroll ">  
-          {receiveOrder.map((e,i)=>{
+          {receiveOrder.map((e:any)=>{
             return (
             <>
-             <Order id={e.id} driver={e.driver} products={e.products} />
+             <Order id={e.idOrder} driver={e.Driver} products={e.products} />
             </>
             )
             })}

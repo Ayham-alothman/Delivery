@@ -10,7 +10,6 @@ async function RemoveWaitDriver(idDriver,idOrder,product){
         {_id:idDriver,'waitFactoryOrder.idOrder':idOrder},
         {$pull:{'waitFactoryOrder.$.products':{idProduct:product.idProduct}}}
      )
-         console.log('here done')
     }
     catch(e){throw e}
   

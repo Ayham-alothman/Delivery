@@ -23,13 +23,14 @@ async function AddSendSuperDriver(Product,idOrder,idDriver){
             break;
           }
         }
-         console.log(found)
+         console.log(`in add super `,found)
         if(found){
-            await Driver.findOneAndUpdate(
+          let res=  await Driver.findOneAndUpdate(
                 {_id:idDriver,"sendSupermarketOrder.idOrder":idOrder},
-                {$push:{"aprovalFactoryOrder.$.Products":{...Product}}}    
+                {$push:{"sendSupermarketOrder.$.products":{...Product}}} ,
+                {new:true}  
             )
-    
+         console.log(res)
           }
         else{
             await Driver.findOneAndUpdate(

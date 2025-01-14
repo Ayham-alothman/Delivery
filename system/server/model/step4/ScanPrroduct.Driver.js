@@ -1,6 +1,6 @@
 import {Driver} from '../schema/Driver.Schema.js';
 
-async function ScanProductDriver(product,idDriver,idOrder){
+async function ScanProductDriver(product,idDriver,idOrder){console.log(product)
     try{
 
         let {waitSupermarketOrder}=await Driver.findById(idDriver);
